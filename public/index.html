@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ta">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>தமிழ்நாடு தேர்தல் கணிப்பு | Tamil Nadu Election Predictor 2026</title>
+  <meta name="description"
+    content="Vote on who will win Tamil Nadu 2026 election. Live crowd-sourced predictions for all 15 major parties." />
+  <meta property="og:title" content="தமிழ்நாடு தேர்தல் கணிப்பு 2026" />
+  <meta property="og:description" content="யார் வெல்வார்கள்? Cast your Tamil Nadu 2026 election prediction!" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tiro+Tamil:ital@0;1&family=Bebas+Neue&family=Poppins:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="particles" id="particles"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <header class="site-header">
+    <div class="header-flag">
+      <span class="flag-stripe saffron"></span>
+      <span class="flag-stripe white"></span>
+      <span class="flag-stripe green"></span>
+    </div>
+    <div class="header-content">
+      <div class="ashoka-wheel">☸</div>
+      <div class="header-text">
+        <p class="header-sub tamil">தமிழ்நாடு • 2026 • பொதுத் தேர்தல்</p>
+        <h1 class="header-title">ELECTION<br /><span class="accent">PREDICTOR</span></h1>
+        <p class="header-sub2">யார் வெல்வார்கள்? உங்கள் கணிப்பு என்ன?</p>
+      </div>
+      <div class="header-right">
+        <div class="live-badge"><span class="live-dot"></span>LIVE</div>
+        <button class="share-btn" onclick="shareLink()"><span>🔗</span> பகிர் / Share</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-value" id="totalVotesDisplay">0</span>
+        <span class="stat-label">மொத்த வாக்குகள் / Total Votes</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value leading-party-name" id="leadingPartyDisplay">—</span>
+        <span class="stat-label">முன்னிலை / Leading</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value" id="leadingPctDisplay">—</span>
+        <span class="stat-label">வாக்கு சதவீதம் / Vote Share</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-value">15</span>
+        <span class="stat-label">முக்கிய கட்சிகள் / Major Parties</span>
+      </div>
+    </div>
+
+    <section class="voting-section">
+      <div class="section-heading">
+        <div class="heading-line"></div>
+        <h2>உங்கள் கணிப்பை பதிவு செய்யுங்கள்</h2>
+        <div class="heading-line"></div>
+      </div>
+      <p class="section-sub">Select a party and cast your prediction — who will win Tamil Nadu 2026?</p>
+
+      <div class="party-grid" id="partyGrid">
+
+        <div class="party-card" id="card-DMK" data-party="DMK" onclick="selectParty('DMK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap dmk-symbol"><span class="party-symbol">🌅</span></div>
+            <div class="party-info">
+              <span class="party-abbr">DMK</span>
+              <span class="party-full-name">திராவிட முன்னேற்றக் கழகம்</span>
+              <span class="party-full-name-en">Dravida Munnetra Kazhagam</span>
+              <span class="party-symbol-name">உதய சூரியன் / Rising Sun</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-AIADMK" data-party="AIADMK" onclick="selectParty('AIADMK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap aiadmk-symbol"><span class="party-symbol">🌱</span></div>
+            <div class="party-info">
+              <span class="party-abbr">ADMK</span>
+              <span class="party-full-name">அனைத்திந்திய அண்ணா திமுக</span>
+              <span class="party-full-name-en">All India Anna DMK</span>
+              <span class="party-symbol-name">இரட்டை இலை / Two Leaves</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-Congress" data-party="Congress" onclick="selectParty('Congress')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap congress-symbol"><span class="party-symbol">✋</span></div>
+            <div class="party-info">
+              <span class="party-abbr">Congress</span>
+              <span class="party-full-name">இந்திய தேசிய காங்கிரஸ்</span>
+              <span class="party-full-name-en">Indian National Congress</span>
+              <span class="party-symbol-name">கை / Hand</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-BJP" data-party="BJP" onclick="selectParty('BJP')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap bjp-symbol"><span class="party-symbol">🪷</span></div>
+            <div class="party-info">
+              <span class="party-abbr">BJP</span>
+              <span class="party-full-name">பாரதிய ஜனதா கட்சி</span>
+              <span class="party-full-name-en">Bharatiya Janata Party</span>
+              <span class="party-symbol-name">தாமரை / Lotus</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-CPIM" data-party="CPIM" onclick="selectParty('CPIM')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap cpim-symbol"><span class="party-symbol">☭</span></div>
+            <div class="party-info">
+              <span class="party-abbr">CPM(M)</span>
+              <span class="party-full-name">இந்திய கம்யூனிஸ்ட் (மார்க்சிஸ்ட்)</span>
+              <span class="party-full-name-en">Communist Party India (Marxist)</span>
+              <span class="party-symbol-name">சுத்தி அரிவாள் நட்சத்திரம்</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-CPI" data-party="CPI" onclick="selectParty('CPI')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap cpi-symbol"><span class="party-symbol">⚒️</span></div>
+            <div class="party-info">
+              <span class="party-abbr">CPI</span>
+              <span class="party-full-name">இந்திய கம்யூனிஸ்ட் கட்சி</span>
+              <span class="party-full-name-en">Communist Party of India</span>
+              <span class="party-symbol-name">தானியக் கதிர்களும் அரிவாளும்</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-VCK" data-party="VCK" onclick="selectParty('VCK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap vck-symbol"><span class="party-symbol">⭐</span></div>
+            <div class="party-info">
+              <span class="party-abbr">VCK</span>
+              <span class="party-full-name">விடுதலை சிறுத்தைகள் கட்சி</span>
+              <span class="party-full-name-en">Viduthalai Chiruthaigal Katchi</span>
+              <span class="party-symbol-name">நட்சத்திரம் / Star</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-MDMK" data-party="MDMK" onclick="selectParty('MDMK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap mdmk-symbol"><span class="party-symbol">🎸</span></div>
+            <div class="party-info">
+              <span class="party-abbr">MDMK</span>
+              <span class="party-full-name">மறுமலர்ச்சி திராவிட முன்னேற்றக் கழகம்</span>
+              <span class="party-full-name-en">Marumalarchi Dravida Munnetra Kazhagam</span>
+              <span class="party-symbol-name">வீணை / Veena</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-DMDK" data-party="DMDK" onclick="selectParty('DMDK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap dmdk-symbol"><span class="party-symbol">🥁</span></div>
+            <div class="party-info">
+              <span class="party-abbr">DMDK</span>
+              <span class="party-full-name">தேசிய முன்னேற்றக் கழகம்</span>
+              <span class="party-full-name-en">Desiya Murpokku Dravida Kazhagam</span>
+              <span class="party-symbol-name">நாகரா / Drum</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-PMK" data-party="PMK" onclick="selectParty('PMK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap pmk-symbol"><span class="party-symbol">🥭</span></div>
+            <div class="party-info">
+              <span class="party-abbr">PMK</span>
+              <span class="party-full-name">பட்டாளி மக்கள் கட்சி</span>
+              <span class="party-full-name-en">Pattali Makkal Katchi</span>
+              <span class="party-symbol-name">மாம்பழம் / Mango</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-TMK" data-party="TMK" onclick="selectParty('TMK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap tmk-symbol"><span class="party-symbol">🚲</span></div>
+            <div class="party-info">
+              <span class="party-abbr">TMK</span>
+              <span class="party-full-name">தமிழக முன்னேற்றக் கழகம்</span>
+              <span class="party-full-name-en">Tamizhaga Makkal Katchi</span>
+              <span class="party-symbol-name">மிதிவண்டி/ Bicycle</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-NTK" data-party="NTK" onclick="selectParty('NTK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap ntk-symbol"><span class="party-symbol">🐯</span></div>
+            <div class="party-info">
+              <span class="party-abbr">NTK</span>
+              <span class="party-full-name">நாம் தமிழர் கட்சி</span>
+              <span class="party-full-name-en">Naam Tamilar Katchi</span>
+              <span class="party-symbol-name">புலி / Tiger</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-MNM" data-party="MNM" onclick="selectParty('MNM')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap mnm-symbol"><span class="party-symbol">🔦</span></div>
+            <div class="party-info">
+              <span class="party-abbr">MNM</span>
+              <span class="party-full-name">மக்கள் நீதி மையம்</span>
+              <span class="party-full-name-en">Makkal Needhi Maiam</span>
+              <span class="party-symbol-name">டார்ச் லைட் / Torch Light</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-TVK" data-party="TVK" onclick="selectParty('TVK')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap tvk-symbol"><span class="party-symbol">🐘</span></div>
+            <div class="party-info">
+              <span class="party-abbr">TVK</span>
+              <span class="party-full-name">தமிழக வெற்றி கழகம்</span>
+              <span class="party-full-name-en">Tamilaga Vettri Kazhagam</span>
+              <span class="party-symbol-name">விசில் / Whistle</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+        <div class="party-card" id="card-DP" data-party="DP" onclick="selectParty('DP')">
+          <div class="party-card-inner">
+            <div class="party-symbol-wrap dp-symbol"><span class="party-symbol">🦅</span></div>
+            <div class="party-info">
+              <span class="party-abbr">DP</span>
+              <span class="party-full-name">தேசிய பார்வை</span>
+              <span class="party-full-name-en">Desiya Paarvai</span>
+              <span class="party-symbol-name">கழுகு / Eagle</span>
+            </div>
+            <div class="party-check">✓</div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="vote-btn" id="voteBtn" onclick="submitVote()" disabled>
+        <span class="vote-btn-icon">🗳️</span>
+        <span>வாக்களிக்கவும் / Cast My Prediction</span>
+      </button>
+    </section>
+
+    <section class="results-section">
+      <div class="section-heading">
+        <div class="heading-line"></div>
+        <h2>நேரடி முடிவுகள் / Live Results</h2>
+        <div class="heading-line"></div>
+      </div>
+      <div class="victory-banner">
+        <div class="victory-inner">
+          <div class="trophy">🏆</div>
+          <div class="victory-text">
+            <span class="victory-label">முன்னணியில் / Currently Leading</span>
+            <span class="victory-party" id="victoryPartyName">—</span>
+            <span class="victory-pct" id="victoryPartyPct"></span>
+          </div>
+        </div>
+      </div>
+      <div class="results-grid" id="resultsGrid"></div>
+      <div class="thankyou-card" id="thankyouCard" style="display:none;">
+        <div class="thankyou-icon">🙏</div>
+        <div class="thankyou-text">
+          <h3>நன்றி! Your prediction has been recorded.</h3>
+          <p>நீங்கள் <strong id="thankyouParty"></strong> கட்சிக்கு வாக்களித்தீர்கள்.</p>
+          <p class="thankyou-note">Results update every 5 seconds as more people vote.</p>
+          <button class="share-result-btn" onclick="shareLink()">🔗 பகிர் / Share this poll with friends!</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="share-modal" id="shareModal" style="display:none;" onclick="closeShareModal(event)">
+      <div class="share-modal-inner">
+        <button class="modal-close" onclick="document.getElementById('shareModal').style.display='none'">✕</button>
+        <div class="modal-icon">🔗</div>
+        <h3>பகிர் / Share This Poll</h3>
+        <p class="modal-sub">Copy this link and send it to friends, family &amp; colleagues!</p>
+        <div class="share-url-row">
+          <input type="text" id="shareUrlInput" readonly class="share-url-input" />
+          <button class="copy-btn" id="copyBtn" onclick="copyLink()">📋 Copy</button>
+        </div>
+        <p class="modal-note">யாரும் இந்த லிங்கில் வாக்களிக்கலாம் • Anyone with this link can vote!</p>
+        <div class="share-platforms">
+          <button class="platform-btn whatsapp" onclick="shareWhatsApp()"><span>💬</span> WhatsApp</button>
+          <button class="platform-btn twitter" onclick="shareTwitter()"><span>🐦</span> Twitter/X</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="disclaimer">
+      <div class="disclaimer-icon">⚠️</div>
+      <p><strong>Disclaimer / மறுப்பு:</strong> இது ஒரு மக்கள் கருத்து கணிப்பு மட்டுமே — This is a crowd-sourced
+        prediction platform for entertainment purposes only. Not affiliated with any political party or the Election
+        Commission of India.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-tamil">வாக்கு உங்கள் உரிமை • ஜனநாயகம் காப்போம் • தமிழ்நாடு வாழ்க</p>
+    <p class="footer-en">Your Vote Is Your Right • Protect Democracy • Long Live Tamil Nadu</p>
+    <p class="footer-parties">தமிழ்நாட்டின் 15 முக்கிய கட்சிகள் • 15 Major Tamil Nadu Parties</p>
+    <p class="footer-copy">© 2026 TN Election Predictor — For Entertainment Only</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
