@@ -35,7 +35,10 @@ const ElectionData = mongoose.model('ElectionData', voteSchema);
 const MONGO_URI = process.env.MONGO_URI;
 
 if (MONGO_URI) {
-  mongoose.connect(MONGO_URI)
+  mongoose.connect(MONGO_URI, {
+    serverSelectionTimeoutMS: 10000, // 10 seconds
+    family: 4 // Force IPv4, prevents Render's IPv6 DNS resolution issues with MongoDB Atlas Free Tier
+  })
     .then(() => {
       console.log('✅ Connected to MongoDB Atlas');
       initDB();
