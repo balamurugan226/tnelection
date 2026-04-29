@@ -49,21 +49,23 @@ function generateParticles() {
   }
 }
 
-// Select party
+// Select party and auto-vote
 function selectParty(id) {
   if (hasVoted) return;
   selectedParty = id;
   document.querySelectorAll('.party-card').forEach(c => c.classList.remove('selected'));
   document.getElementById(`card-${id}`).classList.add('selected');
-  const btn = document.getElementById('voteBtn');
-  btn.disabled = false;
-  btn.style.background = 'linear-gradient(135deg,#FF6B1A,#E85000)';
+  
+  // Automatically submit the vote as soon as they click the party card
+  submitVote();
 }
 
 // Submit vote
 async function submitVote() {
   if (!selectedParty || hasVoted) return;
   const btn = document.getElementById('voteBtn');
+  btn.style.display = 'flex';
+  btn.style.background = 'linear-gradient(135deg,#FF6B1A,#E85000)';
   btn.disabled = true;
   btn.innerHTML = '<span class="vote-btn-icon">⏳</span><span>Submitting...</span>';
   try {
